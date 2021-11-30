@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/choices.min.js">
+    <link rel="stylesheet" href="/css/choices.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="css/inputmask.min.js"></script>
+    <title>Document</title>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=ваш API-ключ&lang=ru_RU" type="text/javascript">
+    </script>
+    <link rel="stylesheet" href="https://unpkg.com/simplebar@latest/dist/simplebar.css" />
+    <script src="https://unpkg.com/simplebar@latest/dist/simplebar.min.js"></script>
+    <script src="/css/just-validate.min.js"></script>
+</head>
+
+<body>
+    <section class="checkbox">
+        <label for="check" class="mycheck">
+            <input type="checkbox" name="check" id="check">
+            Динозавры
+            <span></span>
+        </label>
+        <label for="check2" class="mycheck">
+            <input type="checkbox" name="check" id="check2">
+            Медведи
+            <span></span>
+        </label>
+        <label for="check3" class="mycheck">
+            <input type="checkbox" name="check" id="check3">
+            Козули
+            <span></span>
+        </label>
+        <label for="check4" class="mycheck">
+            <input type="checkbox" name="check" id="check4">
+            Лисы
+            <span></span>
+        </label>
+        <label for="check5" class="mycheck">
+            <input type="checkbox" name="check" id="check5">
+            Волки
+            <span></span>
+        </label>
+        <label for="check6" class="mycheck">
+            <input type="checkbox" name="check" id="check6">
+            Олени и лоси
+            <span></span>
+        </label>
+
+    </section>
+    <section class="selection">
+        <div>
+            <br>
+            <select name="select">
+                <option value="1">1 option</option>
+                <option value="2">2 option</option>
+                <option value="3">3 option</option>
+                <option value="5">5 option</option>
+            </select>
+        </div>
+
+        <script src="css/choices.min.js"></script>
+        <script>
+            const elem = document.querySelector('select');
+            const choises = new Choices(elem, {
+                searchEnabled: false
+            });
+        </script>
+    </section>
+    <section class="map">
+        <br>
+        <div id="map" style="width: 600px; height: 400px"></div>
+    </section>
+    <section class="tooltip">
+        <br>
+        <div class="toolt">
+            <div class="marker">
+
+            </div>
+            <div class="popup">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam, repellat.
+            </div>
+        </div>
+    </section>
+    <section class="scroll">
+        <div class="custom-scroll" data-simplebar>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti quam tempora saepe dolor, quasi earum
+            optio placeat quo inventore, dolores voluptate quibusdam qui ea facilis cum. Ratione fugit illum aperiam
+            perferendis inventore blanditiis! Modi quas dolores commodi porro ducimus tempore harum fugit accusantium
+            veritatis, temporibus eveniet! Quam facere quaerat nam.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde suscipit quod ipsa perferendis excepturi quas
+            sequi deleniti aliquid, architecto rerum officia voluptate ullam eveniet numquam consectetur. Laborum
+            facilis dignissimos quos earum. Blanditiis fugiat voluptatibus earum mollitia, aperiam incidunt tempora
+            rerum modi perferendis facilis provident. Voluptatem quaerat nemo neque harum doloribus quam eveniet aliquam
+            minima omnis nam fugiat quo laudantium, adipisci sequi officia nihil ex sint quae dolorum deleniti explicabo
+            accusantium illum fugit consequuntur. Eveniet eligendi saepe doloremque porro, accusamus asperiores harum,
+            unde mollitia corporis laboriosam est, debitis illum dolor tempore sequi molestiae vero recusandae aliquid
+            incidunt error cum architecto Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores sequi illo
+            iure iusto, cupiditate amet consectetur perspiciatis, ipsum atque eligendi, autem fuga! Itaque dignissimos
+            rerum odit enim quia soluta, voluptas fugiat dolorem ipsum quos obcaecati iure, voluptate officiis!
+            Distinctio voluptates non ut eaque, temporibus delectus est reprehenderit eligendi suscipit a ducimus
+            deserunt sed laboriosam unde qui. Possimus ad praesentium laborum, atque saepe pariatur nihil excepturi
+            eaque explicabo, libero nobis esse reiciendis nemo aperiam ullam quis. Nostrum rem expedita facilis amet
+            maiores mollitia officiis atque fugit eos inventore vitae dolorum eaque accusantium incidunt, magni, magnam
+            nemo aspernatur adipisci nam eius! Inventore?
+        </div>
+    </section>
+    <section class="contacts-send">
+        <form action="" class="form">
+            <label for="name">Как вас зовут?</label>
+            <input type="text" name="name" placeholder="Имя*" data-validate-field="name">
+            <label for="tel">Укажите ваш телефон</label>
+            <input type="tel" name="tel" placeholder="Телефон*" data-validate-field="tel" data-validate-rules="phone">
+            <label for="email">Укажите ваш e-mail</label>
+            <input type="email" name="email" placeholder="E-mail*" data-validate-field="email">
+            <button class="btn">Заказать</button>
+        </form>
+    </section>
+    <script type="text/javascript">
+        // Функция ymaps.ready() будет вызвана, когда
+        // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
+        document.addEventListener('DOMContentLoaded', function () {
+
+            var selector = document.querySelector("input[type='tel']");
+
+            var im = new Inputmask("+375(99) 999-99-99");
+            im.mask(selector);
+
+
+            new window.JustValidate('.form', {
+                rules: {
+                    email: {
+                        email: true,
+                        required: true
+                    },
+                    name: {
+                        required: true,
+                        minLength: 2,
+                        maxLength: 30
+                    },
+                    tel: {
+                        required: true,
+                        function: (name, valid) => {
+                            const phone = selector.inputmask.unmaskedvalue()
+                            return Number(phone) && phone.length === 9;
+                        }
+                    }
+                },
+                // messages: {
+                //     email: {
+                //         // remote: 'Email already exist',
+                //         email: 'Email not valid!'
+                //     },
+                //     name: {
+                //         // remote: 'Login already exist',
+                //         required: 'Введите корректное имя!'
+                //     }
+                // },
+            });
+
+
+
+
+            ymaps.ready(init);
+            function init() {
+                // Создание карты.
+
+                var myMap = new ymaps.Map("map", {
+                    // Координаты центра карты.
+                    // Порядок по умолчанию: «широта, долгота».
+                    // Чтобы не определять координаты центра карты вручную,
+                    // воспользуйтесь инструментом Определение координат.
+                    center: [53.882762, 27.515631],
+                    // Уровень масштабирования. Допустимые значения:
+                    // от 0 (весь мир) до 19.
+                    zoom: 18
+                });
+                MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
+                    '<div style="color: #111111; font-weight: bold;">$[properties.iconContent]</div>'
+                )
+                myPlacemark = new ymaps.Placemark([53.882762, 27.515631], {
+                    hintContent: 'Собственный значок метки'
+                })
+                myMap.geoObjects.add(myPlacemark)
+            }
+        })
+    </script>
+</body>
+
+</html>
